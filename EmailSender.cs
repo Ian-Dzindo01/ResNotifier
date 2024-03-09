@@ -3,6 +3,7 @@ using System.Net.Mail;
 
 namespace SendMail {  
     class Program {  
+        // static public Scraper scraper = new();
         static string smtpAddress = "smtp.gmail.com";  
         static int portNumber = 587;  
         static bool enableSSL = true;  
@@ -11,8 +12,9 @@ namespace SendMail {
         static string emailToAddress = "ian.dzindo01@gmail.com"; //Receiver Email Address  
         static string subject = "Hello";  
         static string body = "Hello, This is Email sending test using gmail.";  
-        static void Main(string[] args) {  
-            SendEmail();  
+        static void Main(string[] args) {
+            Scraper.Start();  
+            // SendEmail();  
         }  
         
         public static void SendEmail() {  

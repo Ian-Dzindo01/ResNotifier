@@ -2,6 +2,7 @@
 using System.Net;  
 using System.Net.Mail;  
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace SendMail {  
     class Program {
@@ -10,7 +11,7 @@ namespace SendMail {
         static int portNumber = 587;  
         static bool enableSSL = true;  
         static string emailFromAddress = "ian.dzindo01@gmail.com";
-        static string password = "umuv xmvc ovlt iyej";
+        static string password = ConfigurationManager.AppSettings["pass"];
         static string emailToAddress = "ian.dzindo01@gmail.com";
         static string body = "Hello, This is Email sending test using gmail.";  
 
@@ -50,3 +51,4 @@ namespace SendMail {
         }
     }  
 } 
+// RZRJ8PGCBNGXG3B9GDHCPMW7

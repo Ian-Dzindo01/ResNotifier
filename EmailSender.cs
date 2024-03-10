@@ -3,21 +3,23 @@ using System.Net.Mail;
 
 namespace SendMail {  
     class Program {
-        GameData gameData = Scraper.Start();  
+        static GameData gameData = Scraper.Start();  
         static string smtpAddress = "smtp.gmail.com";  
         static int portNumber = 587;  
         static bool enableSSL = true;  
         static string emailFromAddress = "ian.dzindo01@gmail.com";
         static string password = "umuv xmvc ovlt iyej";
         static string emailToAddress = "ian.dzindo01@gmail.com";
-        static string subject = "Hello";  
         static string body = "Hello, This is Email sending test using gmail.";  
+
         static void Main(string[] args) {
             Scraper.Start();  
-            // SendEmail();  
+            string title = gameData.Title;
+
+            SendEmail(title, body);  
         }  
         
-        public static void SendEmail() {  
+        public static void SendEmail(string subject, string body) {  
             using(MailMessage mail = new MailMessage()) {  
                 mail.From = new MailAddress(emailFromAddress);  
                 mail.To.Add(emailToAddress);  
@@ -32,6 +34,11 @@ namespace SendMail {
                     smtp.Send(mail);  
                 }  
             }  
-        }  
+        }
+
+        // public static string formatString(GameData gameData)
+        // {
+
+        // }  
     }  
 } 

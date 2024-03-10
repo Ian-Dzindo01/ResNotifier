@@ -1,5 +1,6 @@
 using HtmlAgilityPack;
 
+
 static public class Scraper
 {
     static public GameData Start()
@@ -11,8 +12,8 @@ static public class Scraper
         var title = document.DocumentNode.SelectNodes("//*[@id=\"content\"]/h1").First().InnerText;
         var awayTeams = document.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[3]/div/table[1]/tbody/tr[1]/td[1]/a");
         var homeTeams = document.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[3]/div/table[1]/tbody/tr[2]/td[1]/a");
-        var homeTeamScores = document.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[3]/div/table[1]/tbody/tr[1]/td[2]");
-        var awayTeamScores =  document.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[3]/div/table[1]/tbody/tr[2]/td[2]");
+        var homeTeamScores = document.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[3]/div/table[1]/tbody/tr[2]/td[2]");
+        var awayTeamScores =  document.DocumentNode.SelectNodes("//*[@id=\"content\"]/div[3]/div/table[1]/tbody/tr[1]/td[2]");
 
         if (homeTeams != null)
         {             

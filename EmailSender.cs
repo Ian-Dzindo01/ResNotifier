@@ -1,5 +1,7 @@
-﻿using System.Net;  
+﻿using System;
+using System.Net;  
 using System.Net.Mail;  
+using System.Collections.Generic;
 
 namespace SendMail {  
     class Program {
@@ -13,9 +15,10 @@ namespace SendMail {
         static string body = "Hello, This is Email sending test using gmail.";  
 
         static void Main(string[] args) {
-            Scraper.Start();  
+            Scraper.Start();
+            var games = gameData.Games;  
             string title = gameData.Title;
-
+            string body = formatString(games);
             SendEmail(title, body);  
         }  
         
@@ -25,7 +28,7 @@ namespace SendMail {
                 mail.To.Add(emailToAddress);  
                 mail.Subject = subject;  
                 mail.Body = body;  
-                mail.IsBodyHtml = true;  
+                mail.IsBodyHtml = false;  
                 //mail.Attachments.Add(new Attachment("D:\\TestFile.txt"));
                 using(SmtpClient smtp = new SmtpClient(smtpAddress, portNumber)) {
                     smtp.UseDefaultCredentials = false;  
@@ -36,9 +39,14 @@ namespace SendMail {
             }  
         }
 
-        // public static string formatString(GameData gameData)
-        // {
+        public static string formatString(List<Game> games)
+        {
+            var stringBuilder = new System.Text.StringBuilder();
 
-        // }  
+            for (int i = 0; i < games.Count; i++)
+                stringBuilder.AppendLine(@$"{games[i].homeTeam} {games[i].homeTeamScore}    {games[i].awayTeamScore} {games[i].awayTeam}");
+
+            return stringBuilder.ToString();   
+        }
     }  
 } 

@@ -1,2 +1,0 @@
-- Two dictionaries which will hold the opponents names and respective scores.
-- Their indices will show who played against who.
